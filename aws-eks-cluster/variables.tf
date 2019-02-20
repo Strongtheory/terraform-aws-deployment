@@ -1,5 +1,5 @@
 variable "cluster-name" {
-  default = "hestia-cluster"
+  default = "sample-cluster"
   type    = "string"
 }
 

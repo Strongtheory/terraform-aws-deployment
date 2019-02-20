@@ -13,8 +13,8 @@ data "aws_availability_zones" "available" {}
 terraform {
   required_version = ">= 0.11.8"
   backend "s3" {
-    bucket  = "hestia-terraform-states"
-    key     = "hestia-deploy-eks-cluster"
+    bucket  = "sample-terraform-states"
+    key     = "eks-cluster-deployment"
     region  = "ap-northeast-1"
   }
 }
