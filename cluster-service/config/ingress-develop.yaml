@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: web
+  namespace: develop
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/auth-type: "basic"
+    traefik.ingress.kubernetes.io/auth-secret: "auth"
+spec:
+  rules:
+  - host: develop.sample-portal.main.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: web
+          servicePort: http
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sample-api-gateway
+  namespace: develop
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: develop.sample-api.main.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: gateway
+          servicePort: http
